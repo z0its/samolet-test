@@ -1,0 +1,28 @@
+.columnFilter {
+   min-width: 200px;
+   padding: 8px;
+   &__field {
+      width: 100%;
+      :global {
+         .ant-form-item {
+            margin-bottom: 0;
+         }
+         .ant-form-item-explain {
+            max-width: 192px;
+         }
+      }
+   }
+   &__controls {
+      width: 100%;
+      display: flex;
+      margin-top: 8px;
+      :global {
+         .ant-space-item {
+            flex: 1 0;
+            .ant-btn {
+               min-width: 100%;
+            }
+         }
+      }
+   }
+}
