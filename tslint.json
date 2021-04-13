@@ -1,0 +1,9 @@
+{
+  "extends": "tslint:recommended",
+  "key": "cmd+k f",
+  "command": "editor.action.codeAction",
+  "args": {
+    "kind": "source.fixAll.tslint",
+    "apply": "first"
+  }
+}

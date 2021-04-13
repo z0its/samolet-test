@@ -1,0 +1,11 @@
+.appContent {
+   display: flex;
+   flex-direction: column;
+   padding: 24px;
+   margin-top: 64px;
+   &__area {
+      flex: 1 0;
+      background: #fff;
+      padding: 24px;
+   }
+}
