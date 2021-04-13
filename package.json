@@ -44,6 +44,8 @@
    },
    "dependencies": {
       "antd": "^4.15.1",
+      "mobx": "^6.2.0",
+      "mobx-react": "^7.1.0",
       "react": "^17.0.1",
       "react-dom": "^17.0.1",
       "react-router": "^5.2.0",
