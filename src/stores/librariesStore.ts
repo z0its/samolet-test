@@ -29,7 +29,7 @@ export class LibrariesStore {
             }));
             this.librariesMap = arrToMap<ILibraryData>(result.data, "order");
             this.isInitialized = true;
-         } else console.log(result.data);
+         } else console.log(result.errorMessage);
          this.dataLoadingInProgress = false;
       });
    }
