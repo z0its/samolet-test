@@ -1,26 +1,22 @@
 import React from "react";
-import { BrowserRouter, Link } from "react-router-dom";
-import { Layout, Menu } from "antd";
+import { BrowserRouter } from "react-router-dom";
+import { Layout, ConfigProvider } from "antd";
+import ruRU from "antd/lib/locale-provider/ru_RU";
 import AppContent from "../AppContent";
+import AppHeader from "../../components/AppHeader";
 import "antd/dist/antd.less";
 import styles from "./styles.module.scss";
 
-const { Header } = Layout;
-
-const AppContainer = () => {
+const AppContainer: React.FC = () => {
    return (
-      <BrowserRouter>
-         <Layout className={styles.appContainer}>
-            <Header className={styles.appHeader}>
-               <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-                  <Menu.Item key="1">
-                     <Link to="/librariesList">librariesList</Link>
-                  </Menu.Item>
-               </Menu>
-            </Header>
-            <AppContent />
-         </Layout>
-      </BrowserRouter>
+      <ConfigProvider locale={ruRU}>
+         <BrowserRouter>
+            <Layout className={styles.appContainer}>
+               <AppHeader />
+               <AppContent />
+            </Layout>
+         </BrowserRouter>
+      </ConfigProvider>
    );
 };
 

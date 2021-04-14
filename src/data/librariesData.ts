@@ -46,3 +46,14 @@ export interface ILibraryData {
    visits: number;
    visits_sites: number;
 }
+
+const mapKeyToName = new Map<string, string>([
+   ["address", "Адрес"],
+   ["employees", "Сотрудников"],
+   ["fullname", "Полное наименование"],
+   ["libraries", "Количество библиотек"],
+   ["territory", "Регион"],
+   /* ... */
+]);
+
+export { mapKeyToName };

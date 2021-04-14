@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Layout } from "antd";
 import LibrariesList from "../LibrariesList";
 import LibraryItem from "../LibraryItem";
@@ -13,7 +13,10 @@ const AppContent = () => {
       <Content className={styles.appContent}>
          <div className={styles.appContent__area}>
             <Switch>
-               <Route path="/librariesList">
+               <Route exact path="/">
+                  <Redirect to="/libraries" />
+               </Route>
+               <Route path="/libraries">
                   <LibrariesList />
                </Route>
                <Route path="/library/:id">

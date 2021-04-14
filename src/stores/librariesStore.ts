@@ -37,6 +37,5 @@ export class LibrariesStore {
    @action async getLibraryItemData(libId: number) {
       if (!this.isInitialized) await this.init();
       this.libraryItemData = this.librariesMap[libId];
-      console.log("this.libraryItemData", this.libraryItemData);
    }
 }

@@ -20,7 +20,10 @@ const LibraryItem: React.FC = () => {
          )}
          {librariesStore.libraryItemData && (
             <div>
-               <PageHeader title="Библиотека" />
+               <PageHeader
+                  title={`Библиотека №${librariesStore.libraryItemData.order}`}
+                  onBack={() => window.history.back()}
+               />
                <LibraryFullInfo libData={librariesStore.libraryItemData} />
             </div>
          )}

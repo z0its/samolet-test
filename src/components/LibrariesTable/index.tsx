@@ -31,7 +31,7 @@ const LibrariesTable: React.FC<LibrariesTableProps> = ({
       {
          dataIndex: "libraries",
          key: "libraries",
-         title: "Библиотек",
+         title: "Количество библиотек",
          sorter: (a, b) => a.libraries - b.libraries,
       },
       {
