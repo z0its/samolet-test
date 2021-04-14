@@ -1,28 +1,42 @@
 import { action, observable, runInAction, makeObservable } from "mobx";
 import FetchService from "../services/fetchService";
 import { ILibraryData } from "../data/librariesData";
+import { arrToMap } from "../helpers";
 
 const fetchService = new FetchService();
 
 export class LibrariesStore {
    @observable librariesData: ILibraryData[] = [];
+   librariesMap = {};
+   @observable dataLoadingInProgress: boolean = false;
+   @observable libraryItemData: ILibraryData = null as ILibraryData;
+   private isInitialized: boolean = false;
 
    constructor() {
       makeObservable(this);
    }
 
-   @action async init() {
+   async init() {
+      if (this.isInitialized) return;
+      this.dataLoadingInProgress = true;
       const result = await fetchService.getLibrariesList();
 
-      console.log("result", result);
-
       runInAction(() => {
-         if (result.success)
+         if (result.success) {
             this.librariesData = result.data.map((record: ILibraryData) => ({
                ...record,
                key: record.order,
             }));
-         else console.log(result.data);
+            this.librariesMap = arrToMap<ILibraryData>(result.data, "order");
+            this.isInitialized = true;
+         } else console.log(result.data);
+         this.dataLoadingInProgress = false;
       });
+   }
+
+   @action async getLibraryItemData(libId: number) {
+      if (!this.isInitialized) await this.init();
+      this.libraryItemData = this.librariesMap[libId];
+      console.log("this.libraryItemData", this.libraryItemData);
    }
 }

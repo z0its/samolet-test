@@ -6,7 +6,7 @@ const base = require("./webpack.config");
 module.exports = merge(base, {
    mode: "development",
    devtool: "source-map",
-   entry: ["webpack-dev-server/client?http://localhost:3000", "./src/index"],
+   entry: ["webpack-dev-server/client?http://localhost:3001", "./src/index"],
    output: {
       path: path.resolve(__dirname, "./dist"),
       filename: "bundle.js",

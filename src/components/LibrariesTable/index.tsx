@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Table, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { ColumnsType } from "antd/es/table";
@@ -7,9 +8,13 @@ import ColumnFilter from "../ColumnFilter";
 
 interface LibrariesTableProps {
    tableData: ILibraryData[];
+   loading: boolean;
 }
 
-const LibrariesTable: React.FC<LibrariesTableProps> = ({ tableData }) => {
+const LibrariesTable: React.FC<LibrariesTableProps> = ({
+   tableData,
+   loading,
+}) => {
    const tableColumns: ColumnsType<ILibraryData> = [
       {
          dataIndex: "territory",
@@ -35,11 +40,22 @@ const LibrariesTable: React.FC<LibrariesTableProps> = ({ tableData }) => {
          title: "",
          fixed: "right",
          width: 60,
-         render: () => <Button icon={<SearchOutlined />}></Button>,
+         render: (text, record) => (
+            <Link to={`/library/${record.order}`}>
+               <Button icon={<SearchOutlined />}></Button>
+            </Link>
+         ),
       },
    ];
 
-   return <Table<ILibraryData> dataSource={tableData} columns={tableColumns} />;
+   return (
+      <Table<ILibraryData>
+         dataSource={tableData}
+         columns={tableColumns}
+         loading={loading}
+         locale={{ emptyText: " " }}
+      />
+   );
 };
 
 export default LibrariesTable;

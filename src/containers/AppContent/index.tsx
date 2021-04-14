@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
 import LibrariesList from "../LibrariesList";
+import LibraryItem from "../LibraryItem";
 import "antd/dist/antd.less";
 import styles from "./styles.module.scss";
 
@@ -15,7 +16,9 @@ const AppContent = () => {
                <Route path="/librariesList">
                   <LibrariesList />
                </Route>
-               <Route path="/library/:id"></Route>
+               <Route path="/library/:id">
+                  <LibraryItem />
+               </Route>
             </Switch>
          </div>
       </Content>

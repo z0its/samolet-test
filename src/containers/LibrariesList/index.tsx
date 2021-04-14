@@ -14,7 +14,10 @@ const LibrariesList: React.FC = () => {
    return (
       <>
          <PageHeader title="Список регионов" />
-         <LibrariesTable tableData={librariesStore.librariesData} />
+         <LibrariesTable
+            tableData={librariesStore.librariesData}
+            loading={librariesStore.dataLoadingInProgress}
+         />
       </>
    );
 };
