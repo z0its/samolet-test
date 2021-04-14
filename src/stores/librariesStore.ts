@@ -29,13 +29,15 @@ export class LibrariesStore {
             }));
             this.librariesMap = arrToMap<ILibraryData>(result.data, "order");
             this.isInitialized = true;
-         } else console.log(result.errorMessage);
+         } else console.log(result.errorMessage); //todo error notifications
          this.dataLoadingInProgress = false;
       });
    }
 
-   @action async getLibraryItemData(libId: number) {
+   async getLibraryItemData(libId: number) {
       if (!this.isInitialized) await this.init();
-      this.libraryItemData = this.librariesMap[libId];
+      runInAction(() => {
+         this.libraryItemData = this.librariesMap[libId];
+      });
    }
 }

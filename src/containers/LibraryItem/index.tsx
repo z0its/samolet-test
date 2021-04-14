@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { observer } from "mobx-react";
 import { useParams } from "react-router-dom";
-import { PageHeader, Empty } from "antd";
+import { PageHeader, Empty, Spin } from "antd";
 import { useStore } from "../../stores";
 import LibraryFullInfo from "../../components/LibraryFullInfo";
 
@@ -14,10 +14,11 @@ const LibraryItem: React.FC = () => {
    }, []);
 
    return (
-      <>
-         {!librariesStore.libraryItemData && (
-            <Empty description="Библиотека не найдена" />
-         )}
+      <Spin spinning={librariesStore.dataLoadingInProgress}>
+         {!librariesStore.libraryItemData &&
+            !librariesStore.dataLoadingInProgress && (
+               <Empty description="Библиотека не найдена" />
+            )}
          {librariesStore.libraryItemData && (
             <div>
                <PageHeader
@@ -27,7 +28,7 @@ const LibraryItem: React.FC = () => {
                <LibraryFullInfo libData={librariesStore.libraryItemData} />
             </div>
          )}
-      </>
+      </Spin>
    );
 };
 
